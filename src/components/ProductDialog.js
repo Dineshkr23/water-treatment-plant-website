@@ -21,13 +21,24 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialog-paper": {
     maxWidth: "90vw",
     maxHeight: "90vh",
-    width: "auto",
+    width: "900px",
     height: "auto",
     margin: theme.spacing(2),
     borderRadius: theme.spacing(2),
     overflow: "hidden",
-    background: "#000",
-    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+    background: "#fff",
+    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.8)",
+    [theme.breakpoints.down("lg")]: {
+      width: "95vw",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "98vw",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "100vw",
+      margin: 0,
+      borderRadius: 0,
+    },
   },
 }));
 
@@ -42,35 +53,10 @@ const DialogContentWrapper = styled(DialogContent)(({ theme }) => ({
   },
 }));
 
-const GalleryContainer = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  height: "auto",
-  minHeight: "600px",
-  position: "relative",
-  [theme.breakpoints.down("sm")]: {
-    minHeight: "500px",
-  },
-}));
-
-const ImageSection = styled(Box)(({ theme }) => ({
-  flex: "1",
-  position: "relative",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  background: "linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)",
-  overflow: "hidden",
-  minHeight: "400px",
-  [theme.breakpoints.down("sm")]: {
-    minHeight: "300px",
-  },
-}));
-
 const ProductImage = styled(Image)(({ theme }) => ({
   width: "100%",
   height: "auto",
-  objectFit: "cover",
+  objectFit: "contain",
   display: "block",
   borderRadius: theme.spacing(2),
 }));
@@ -210,7 +196,8 @@ const ProductDialog = ({ open, onClose, product, allProducts }) => {
       onKeyDown={handleKeyDown}
       PaperProps={{
         sx: {
-          maxWidth: isMobile ? "95vw" : "85vw",
+          width: isMobile ? "100vw" : "1200px",
+          maxWidth: isMobile ? "100vw" : "1200px",
           maxHeight: isMobile ? "95vh" : "90vh",
         },
       }}
@@ -222,7 +209,15 @@ const ProductDialog = ({ open, onClose, product, allProducts }) => {
 
         <Box sx={{ position: "relative", p: 2 }}>
           <Box
-            sx={{ position: "relative", borderRadius: 2, overflow: "hidden" }}
+            sx={{
+              position: "relative",
+              borderRadius: 2,
+              overflow: "hidden",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              minHeight: isMobile ? "300px" : "400px",
+            }}
           >
             <ProductImage
               src={currentProduct.image}
@@ -234,6 +229,8 @@ const ProductDialog = ({ open, onClose, product, allProducts }) => {
                 width: "100%",
                 height: "auto",
                 maxHeight: isMobile ? "50vh" : "60vh",
+                objectFit: "contain",
+                objectPosition: "center",
               }}
             />
 

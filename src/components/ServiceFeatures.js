@@ -1,8 +1,10 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Box, Container, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Image from "next/image";
+import ServiceDialog from "./ServiceDialog";
 
 const ServiceItem = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -12,6 +14,13 @@ const ServiceItem = styled(Box)(({ theme }) => ({
   flex: 1,
   minWidth: "100px",
   transition: "all 0.3s ease",
+  cursor: "pointer",
+  padding: theme.spacing(2),
+  "&:hover": {
+    backgroundColor: "rgba(0, 43, 122, 0.05)",
+    transform: "translateY(-2px)",
+    boxShadow: "0 4px 20px rgba(0, 43, 122, 0.1)",
+  },
 }));
 
 const ServiceIcon = styled(Image)(({ theme }) => ({
@@ -69,6 +78,40 @@ const services = [
 ];
 
 const ServiceFeatures = () => {
+  const [selectedService, setSelectedService] = useState(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const handleServiceClick = (service) => {
+    setSelectedService(service);
+    setDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+    setSelectedService(null);
+  };
+
+  const openQuoteDialog = () => {
+    const quoteService = services[0];
+    setSelectedService(quoteService);
+    setDialogOpen(true);
+  };
+
+  useEffect(() => {
+    window.openQuoteDialog = openQuoteDialog;
+
+    const handleOpenQuoteDialog = () => {
+      openQuoteDialog();
+    };
+
+    window.addEventListener("openQuoteDialog", handleOpenQuoteDialog);
+
+    return () => {
+      window.removeEventListener("openQuoteDialog", handleOpenQuoteDialog);
+      delete window.openQuoteDialog;
+    };
+  }, []);
+
   return (
     <Container maxWidth="lg">
       <Box
@@ -79,7 +122,7 @@ const ServiceFeatures = () => {
           flexGrow: 1,
           gap: 0,
           overflowX: "auto",
-          mt: 4,
+          mt: 1,
         }}
       >
         <Box
@@ -93,6 +136,7 @@ const ServiceFeatures = () => {
           {services.map((service, index) => (
             <ServiceItem
               key={`desktop-${index}`}
+              onClick={() => handleServiceClick(service)}
               sx={{
                 borderRight:
                   index < services.length - 1 ? "1px solid #BCBCBC" : "none",
@@ -128,6 +172,7 @@ const ServiceFeatures = () => {
           }}
         >
           <ServiceItem
+            onClick={() => handleServiceClick(services[0])}
             sx={{
               flex: "1",
             }}
@@ -150,6 +195,7 @@ const ServiceFeatures = () => {
             </Typography>
           </ServiceItem>
           <ServiceItem
+            onClick={() => handleServiceClick(services[1])}
             sx={{
               flex: "1",
             }}
@@ -182,6 +228,7 @@ const ServiceFeatures = () => {
           }}
         >
           <ServiceItem
+            onClick={() => handleServiceClick(services[2])}
             sx={{
               flex: "1",
             }}
@@ -204,6 +251,7 @@ const ServiceFeatures = () => {
             </Typography>
           </ServiceItem>
           <ServiceItem
+            onClick={() => handleServiceClick(services[3])}
             sx={{
               flex: "1",
             }}
@@ -235,6 +283,7 @@ const ServiceFeatures = () => {
           }}
         >
           <ServiceItem
+            onClick={() => handleServiceClick(services[4])}
             sx={{
               flex: "1",
               maxWidth: "50%",
@@ -262,6 +311,7 @@ const ServiceFeatures = () => {
         {services.map((service, index) => (
           <ServiceItem
             key={`mobile-${index}`}
+            onClick={() => handleServiceClick(service)}
             sx={{
               display: { xs: "flex", sm: "none", md: "none" },
               width: "100%",
@@ -288,6 +338,12 @@ const ServiceFeatures = () => {
           </ServiceItem>
         ))}
       </Box>
+
+      <ServiceDialog
+        open={dialogOpen}
+        onClose={handleCloseDialog}
+        service={selectedService}
+      />
     </Container>
   );
 };

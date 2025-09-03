@@ -13,7 +13,9 @@ export default function Home() {
       <section id="home">
         <HeroSection />
       </section>
-      <ServiceFeatures />
+      <section id="services">
+        <ServiceFeatures />
+      </section>
       <section id="products">
         <ProductsSection />
       </section>

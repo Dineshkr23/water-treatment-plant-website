@@ -44,10 +44,10 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
 const StyledButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.main,
   color: "white",
-  padding: "5px 60px",
-  fontSize: "1.3rem",
+  padding: theme.spacing(0.5, 6),
+  fontSize: "1rem",
   fontWeight: 600,
-  borderRadius: "10px",
+  borderRadius: theme.spacing(1),
   "&:hover": {
     backgroundColor: theme.palette.secondary.dark,
     transform: "translateY(-2px)",
@@ -169,25 +169,10 @@ const CallbackRequestSection = () => {
                   />
                 </Grid>
 
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12}>
                   <TextField
                     fullWidth
                     label="Mobile No"
-                    variant="outlined"
-                    size={isSmallMobile ? "small" : "medium"}
-                    sx={{
-                      backgroundColor: "white",
-                      "& .MuiOutlinedInput-root": {
-                        borderRadius: 2,
-                      },
-                    }}
-                  />
-                </Grid>
-
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Loan Type"
                     variant="outlined"
                     size={isSmallMobile ? "small" : "medium"}
                     sx={{
@@ -235,7 +220,7 @@ const CallbackRequestSection = () => {
                   sx={{ textAlign: "center", mt: { xs: 2, sm: 2.5, md: 3 } }}
                 >
                   <StyledButton type="submit" variant="contained">
-                    Apply
+                    Submit Request
                   </StyledButton>
                 </Grid>
               </Grid>

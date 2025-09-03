@@ -43,8 +43,8 @@ const ProfileImage = styled(Image)(({ theme }) => ({
 const StyledButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.main,
   color: "white",
-  padding: "6px 24px",
-  borderRadius: "10px",
+  padding: theme.spacing(0.5, 3),
+  borderRadius: theme.spacing(1),
   "&:hover": {
     backgroundColor: "#00B377",
     transform: "translateX(4px)",
@@ -92,7 +92,7 @@ const AboutUsSection = () => {
                 }}
               >
                 <ProfileImage
-                  src="/images/who-we-are.png"
+                  src="/images/who-we-are.webp"
                   alt="Syed Mohadeen"
                   width={isSmallMobile ? 240 : isMobile ? 280 : 380}
                   height={isSmallMobile ? 300 : isMobile ? 350 : 450}

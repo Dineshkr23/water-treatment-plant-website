@@ -56,31 +56,6 @@ const FooterLogo = styled(Image)(({ theme }) => ({
   },
 }));
 
-const CompanyName = styled(Typography)(({ theme }) => ({
-  fontWeight: 700,
-  fontSize: "1.5rem",
-  color: theme.palette.primary.main,
-  letterSpacing: "0.5px",
-  marginBottom: theme.spacing(0.5),
-  [theme.breakpoints.down("md")]: {
-    fontSize: "1.3rem",
-    textAlign: "center",
-  },
-  [theme.breakpoints.down("sm")]: {
-    fontSize: "1.2rem",
-  },
-}));
-
-const Tagline = styled(Typography)(({ theme }) => ({
-  fontSize: "0.9rem",
-  color: theme.palette.secondary.main,
-  fontWeight: 500,
-  letterSpacing: "1px",
-  [theme.breakpoints.down("md")]: {
-    textAlign: "center",
-  },
-}));
-
 const SectionTitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.main,
   fontWeight: 600,
@@ -90,12 +65,17 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
   display: "inline-block",
   [theme.breakpoints.down("md")]: {
     textAlign: "center",
-    display: "block",
     marginBottom: theme.spacing(1.5),
   },
   [theme.breakpoints.down("sm")]: {
     marginBottom: theme.spacing(1),
     fontSize: "1rem",
+  },
+}));
+
+const SectionTitleContainer = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down("md")]: {
+    textAlign: "center",
   },
 }));
 
@@ -211,12 +191,14 @@ const Footer = () => {
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <SectionTitle
-              variant={isSmallMobile ? "body1" : "h6"}
-              component="h3"
-            >
-              Information
-            </SectionTitle>
+            <SectionTitleContainer>
+              <SectionTitle
+                variant={isSmallMobile ? "body1" : "h6"}
+                component="h3"
+              >
+                Information
+              </SectionTitle>
+            </SectionTitleContainer>
 
             <ContactInfo variant="body2">
               <Phone sx={{ fontSize: isSmallMobile ? "0.9rem" : "1rem" }} />
@@ -289,12 +271,14 @@ const Footer = () => {
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <SectionTitle
-              variant={isSmallMobile ? "body1" : "h6"}
-              component="h3"
-            >
-              Quick Links
-            </SectionTitle>
+            <SectionTitleContainer>
+              <SectionTitle
+                variant={isSmallMobile ? "body1" : "h6"}
+                component="h3"
+              >
+                Quick Links
+              </SectionTitle>
+            </SectionTitleContainer>
 
             {quickLinks.map((link) => (
               <FooterLink
@@ -312,12 +296,14 @@ const Footer = () => {
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <SectionTitle
-              variant={isSmallMobile ? "body1" : "h6"}
-              component="h3"
-            >
-              Connect with us
-            </SectionTitle>
+            <SectionTitleContainer>
+              <SectionTitle
+                variant={isSmallMobile ? "body1" : "h6"}
+                component="h3"
+              >
+                Connect with us
+              </SectionTitle>
+            </SectionTitleContainer>
 
             <Box
               sx={{
@@ -357,7 +343,7 @@ const Footer = () => {
             fontSize: isSmallMobile ? "0.75rem" : "0.875rem",
           }}
         >
-          © 2025 Raddow Engineers. All rights reserved.
+          © {new Date().getFullYear()} Raddow Engineers. All rights reserved.
         </Typography>
       </Box>
     </FooterContainer>

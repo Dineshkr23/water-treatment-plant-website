@@ -13,6 +13,7 @@ import { styled } from "@mui/material/styles";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const HeroContainer = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -157,7 +158,7 @@ const DotsContainer = styled(Box)(({ theme }) => ({
 const sliderData = [
   {
     id: 1,
-    image: "/images/hero-image-1.png",
+    image: "/images/hero-image-1.webp",
     title: (
       <>
         <span className="engineering">Engineering</span>
@@ -172,7 +173,7 @@ const sliderData = [
   },
   {
     id: 2,
-    image: "/images/hero-image-1.png",
+    image: "/images/hero-image-1.webp",
     title: (
       <>
         <span className="engineering">Advanced</span>
@@ -187,7 +188,7 @@ const sliderData = [
   },
   {
     id: 3,
-    image: "/images/hero-image-1.png",
+    image: "/images/hero-image-1.webp",
     title: (
       <>
         <span className="engineering">Solar</span>
@@ -202,7 +203,7 @@ const sliderData = [
   },
   {
     id: 4,
-    image: "/images/hero-image-1.png",
+    image: "/images/hero-image-1.webp",
     title: (
       <>
         <span className="engineering">Water</span>
@@ -223,8 +224,8 @@ const HeroSection = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isSmallMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const router = useRouter();
 
-  // Auto-advance slides
   useEffect(() => {
     const timer = setInterval(() => {
       if (!isTransitioning) {
@@ -235,7 +236,6 @@ const HeroSection = () => {
     return () => clearInterval(timer);
   }, [currentSlide, isTransitioning]);
 
-  // Reset auto-advance timer when manually navigating
   const resetAutoAdvance = () => {
     setCurrentSlide((prev) => prev);
   };
@@ -269,16 +269,30 @@ const HeroSection = () => {
   const handleButtonClick = (action) => {
     switch (action) {
       case "call":
-        window.location.href = "tel:+1234567890";
+        window.location.href = "tel:+919845989141";
         break;
       case "learn":
-        // Scroll to products section or navigate to learn more page
+        router.push("/products?category=heat-pumps");
         break;
       case "quote":
-        // Open quote form or navigate to quote page
+        setTimeout(() => {
+          if (window.openQuoteDialog) {
+            window.openQuoteDialog();
+          } else {
+            console.log("openQuoteDialog function not found");
+          }
+        }, 100);
         break;
       case "contact":
-        // Navigate to contact page
+        const contactSection = document.getElementById("contact");
+        if (contactSection) {
+          const headerHeight = 80;
+          const targetPosition = contactSection.offsetTop - headerHeight;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }
         break;
       default:
         break;

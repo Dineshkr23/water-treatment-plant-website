@@ -11,9 +11,7 @@ import {
   CardContent,
   useTheme,
   useMediaQuery,
-  Chip,
   Fade,
-  Paper,
   Skeleton,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -33,7 +31,7 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
     marginBottom: theme.spacing(2),
   },
   [theme.breakpoints.down("sm")]: {
-    marginBottom: theme.spacing(1.5),
+    marginBottom: theme.spacing(5),
   },
 }));
 
@@ -41,14 +39,13 @@ const ProductCard = styled(Card)(({ theme }) => ({
   textAlign: "center",
   padding: 0,
   width: "100%",
-  minHeight: "400px",
+  minHeight: "450px",
   border: "none",
   borderRadius: theme.spacing(3),
   transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
   cursor: "pointer",
   backgroundColor: "rgba(255, 255, 255, 0.9)",
-  backdropFilter: "blur(10px)",
-  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
+  border: "1px solid #E0E0E0",
   overflow: "hidden",
   position: "relative",
   display: "flex",
@@ -64,217 +61,220 @@ const ProductCard = styled(Card)(({ theme }) => ({
     opacity: 1,
   },
   [theme.breakpoints.down("md")]: {
-    minHeight: "350px",
+    minHeight: "400px",
     borderRadius: theme.spacing(2),
   },
   [theme.breakpoints.down("sm")]: {
-    minHeight: "300px",
+    minHeight: "350px",
   },
 }));
 
 const ProductImage = styled(Image)(({ theme }) => ({
   transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-  objectFit: "cover",
-  borderRadius: theme.spacing(2),
-  margin: theme.spacing(2),
+  objectFit: "contain",
+  objectPosition: "center",
+  display: "block",
 }));
 
-const CategoryChip = styled(Chip)(({ theme }) => ({
-  position: "absolute",
-  top: theme.spacing(2),
-  right: theme.spacing(2),
-  backgroundColor: "rgba(255, 255, 255, 0.9)",
-  backdropFilter: "blur(10px)",
-  color: theme.palette.primary.main,
-  fontWeight: 600,
-  border: "1px solid rgba(255, 255, 255, 0.3)",
-  zIndex: 3,
-}));
-
-// Dummy product data for each category
 const categoryProducts = {
   "water-treatment-plants": [
     {
       id: 1,
-      name: "Industrial Water Filter System",
+      name: "Activated Carbon Filter",
       description:
-        "High-capacity filtration system for industrial water treatment with advanced membrane technology.",
-      image: "/images/water-treatment-plants.png",
+        "Advanced filtration system using activated carbon to remove chlorine, organic compounds, and improve water taste and odor.",
+      image: "/images/water-treatment-plants/ActivatedCarbonFilter.webp",
     },
     {
       id: 2,
-      name: "Reverse Osmosis Plant",
+      name: "Bag Filter",
       description:
-        "Commercial RO plant with multi-stage filtration for pure water production.",
-      image: "/images/ro-system.png",
+        "Efficient bag filtration system for removing suspended solids and particulate matter from industrial water streams.",
+      image: "/images/water-treatment-plants/BagFilter.webp",
     },
     {
       id: 3,
-      name: "Water Softener System",
+      name: "Industrial Water Treatment Plant",
       description:
-        "Advanced water softening solution for hard water treatment in commercial facilities.",
-      image: "/images/sewage-treatment-plants.png",
+        "Complete industrial water treatment solution with multi-stage filtration, softening, and purification processes.",
+      image:
+        "/images/water-treatment-plants/IndustrialWaterTreatmentPlant.webp",
+    },
+    {
+      id: 4,
+      name: "Pressure Sand Filter",
+      description:
+        "High-pressure sand filtration system for removing suspended solids and turbidity from water supplies.",
+      image: "/images/water-treatment-plants/PressureSandFilter.webp",
+    },
+    {
+      id: 5,
+      name: "Water Softner",
+      description:
+        "Ion exchange water softener system for removing hardness minerals like calcium and magnesium from water.",
+      image: "/images/water-treatment-plants/WaterSoftner.webp",
+    },
+    {
+      id: 6,
+      name: "Water Softening System",
+      description:
+        "Advanced water softening technology for residential and commercial applications with automatic regeneration.",
+      image: "/images/water-treatment-plants/WaterSofteningSystem.webp",
     },
   ],
   "ro-system": [
     {
-      id: 4,
-      name: "Home RO System",
+      id: 7,
+      name: "RO System",
       description:
-        "Compact reverse osmosis system for residential use with 5-stage filtration.",
-      image: "/images/ro-system.png",
+        "Compact 5-stage reverse osmosis system for residential use with high-efficiency membrane technology.",
+      image: "/images/ro-system/RoType1.webp",
     },
     {
-      id: 5,
-      name: "Commercial RO System",
+      id: 8,
+      name: "RO System",
       description:
-        "Large-scale RO system for commercial applications with high output capacity.",
-      image: "/images/ro-system.png",
-    },
-    {
-      id: 6,
-      name: "Industrial RO System",
-      description:
-        "Heavy-duty RO system for industrial water treatment with automated controls.",
-      image: "/images/ro-system.png",
+        "Commercial-grade RO system with high output capacity for industrial and commercial water purification needs.",
+      image: "/images/ro-system/RoType2.webp",
     },
   ],
   "sewage-treatment-plants": [
     {
-      id: 7,
-      name: "Compact Sewage Treatment Plant",
-      description:
-        "Space-efficient sewage treatment solution for small communities and commercial buildings.",
-      image: "/images/sewage-treatment-plants.png",
-    },
-    {
-      id: 8,
-      name: "Industrial Wastewater Treatment",
-      description:
-        "Advanced wastewater treatment system for industrial facilities with biological processing.",
-      image: "/images/sewage-treatment-plants.png",
-    },
-    {
       id: 9,
-      name: "Municipal Sewage Treatment",
+      name: "Modular STP",
       description:
-        "Large-scale sewage treatment plant for municipal applications with multiple treatment stages.",
-      image: "/images/sewage-treatment-plants.png",
+        "Compact modular sewage treatment plant for small communities with advanced biological treatment processes.",
+      image: "/images/sewage-treatment-plants/ModularSTP.webp",
+    },
+    {
+      id: 10,
+      name: "Grease Separator",
+      description:
+        "Industrial grease separation system for removing fats, oils, and grease from wastewater streams.",
+      image: "/images/sewage-treatment-plants/GreaseSeparator.webp",
     },
   ],
   "pumps-pumping-system": [
     {
-      id: 10,
-      name: "Centrifugal Pump",
-      description:
-        "High-efficiency centrifugal pump for water transfer and circulation applications.",
-      image: "/images/pumps-pumping-system.png",
-    },
-    {
       id: 11,
-      name: "Submersible Pump",
+      name: "Twin Booster Pump",
       description:
-        "Durable submersible pump for deep well and sump applications with corrosion resistance.",
-      image: "/images/pumps-pumping-system.png",
+        "Dual pump booster system for maintaining consistent water pressure in high-rise buildings and large facilities.",
+      image: "/images/pumps-pumping-system/TwinBoosterPump.webp",
     },
     {
       id: 12,
-      name: "Booster Pump System",
+      name: "Dewatering Pump",
       description:
-        "Multi-stage booster pump system for high-pressure water supply applications.",
-      image: "/images/pumps-pumping-system.png",
+        "Heavy-duty submersible pump for construction sites, mines, and flood control applications.",
+      image: "/images/pumps-pumping-system/DewateringPump.jpg",
+    },
+    {
+      id: 13,
+      name: "Hydro Pneumatic Pressure Boosting System",
+      description:
+        "Automated pressure boosting system with hydro-pneumatic tank for consistent water supply pressure.",
+      image:
+        "/images/pumps-pumping-system/HydroPneumaticPressureBoostingSystem.jpg",
+    },
+    {
+      id: 14,
+      name: "Open Well Submersible Pump",
+      description:
+        "High-efficiency submersible pump for open wells with corrosion-resistant construction for long service life.",
+      image: "/images/pumps-pumping-system/OpenWellSubmersiblePump.webp",
+    },
+    {
+      id: 15,
+      name: "Sewage Cutter Pump",
+      description:
+        "Heavy-duty sewage pump with cutting mechanism for handling solid waste and preventing clogging.",
+      image: "/images/pumps-pumping-system/SewageCutterPump.jpg",
+    },
+    {
+      id: 16,
+      name: "CMBE Booster Pump",
+      description:
+        "High-efficiency centrifugal booster pump for water transfer, irrigation, and industrial applications.",
+      image: "/images/pumps-pumping-system/CMBEBoosterPump.webp",
     },
   ],
   "heat-pumps": [
     {
-      id: 13,
-      name: "Air Source Heat Pump",
+      id: 17,
+      name: "Heat Pump",
       description:
-        "Energy-efficient air source heat pump for residential heating and cooling needs.",
-      image: "/images/heat-pumps.png",
+        "Air-source heat pump system for residential heating and cooling with high energy efficiency ratings.",
+      image: "/images/heat-pumps/heatPump1.webp",
     },
     {
-      id: 14,
-      name: "Ground Source Heat Pump",
+      id: 18,
+      name: "Heat Pump",
       description:
-        "Geothermal heat pump system for sustainable heating and cooling with high efficiency.",
-      image: "/images/heat-pumps.png",
-    },
-    {
-      id: 15,
-      name: "Water Source Heat Pump",
-      description:
-        "Water source heat pump for commercial buildings with access to water bodies.",
-      image: "/images/heat-pumps.png",
+        "Ground-source geothermal heat pump for sustainable heating and cooling with superior efficiency performance.",
+      image: "/images/heat-pumps/heatPump2.webp",
     },
   ],
   "solar-water-heating-system": [
     {
-      id: 16,
-      name: "Flat Plate Solar Collector",
-      description:
-        "High-efficiency flat plate solar collector for residential water heating applications.",
-      image: "/images/solar-water-heating-system.png",
-    },
-    {
-      id: 17,
-      name: "Evacuated Tube Collector",
-      description:
-        "Advanced evacuated tube solar collector with superior thermal performance.",
-      image: "/images/solar-water-heating-system.png",
-    },
-    {
-      id: 18,
+      id: 19,
       name: "Solar Water Heater System",
       description:
-        "Complete solar water heating system with storage tank and circulation pump.",
-      image: "/images/solar-water-heating-system.png",
+        "Flat plate solar collector system for residential water heating with high thermal efficiency.",
+      image: "/images/solar-water-heating-syatem/SolarWaterHeatingSystem1.webp",
+    },
+    {
+      id: 20,
+      name: "Solar Water Heater System",
+      description:
+        "Evacuated tube solar collector system with superior heat retention and performance in all weather conditions.",
+      image: "/images/solar-water-heating-syatem/SolarWaterHeatingSystem2.webp",
+    },
+    {
+      id: 21,
+      name: "Solar Water Heater System",
+      description:
+        "Complete solar water heating system with storage tank, circulation pump, and control system.",
+      image: "/images/solar-water-heating-syatem/SolarWaterHeatingSystem3.webp",
     },
   ],
   "water-heaters": [
     {
-      id: 19,
-      name: "Electric Water Heater",
+      id: 22,
+      name: "Oil/Gas Central Water Heater",
       description:
-        "Energy-efficient electric water heater with digital temperature control and safety features.",
-      image: "/images/water-heaters.png",
+        "High-capacity oil/gas-fired water heater for commercial and industrial applications with rapid heating.",
+      image: "/images/water-heaters/OilGasCentralWaterHeater.png",
     },
     {
-      id: 20,
-      name: "Gas Water Heater",
+      id: 23,
+      name: "Bio Mass Water Heating System",
       description:
-        "High-performance gas water heater with rapid heating and energy-saving technology.",
-      image: "/images/water-heaters.png",
+        "Sustainable biomass-fired water heating system using renewable fuel sources for eco-friendly operation.",
+      image: "/images/water-heaters/BioMassWaterHeatingSystem.png",
     },
     {
-      id: 21,
-      name: "Tankless Water Heater",
+      id: 24,
+      name: "Water Heater",
       description:
-        "On-demand tankless water heater for continuous hot water supply with space-saving design.",
-      image: "/images/water-heaters.png",
+        "Tankless water heater system providing instant hot water with energy-saving technology and space efficiency.",
+      image: "/images/water-heaters/WaterHeater3.png",
     },
   ],
   "solar-power-pv": [
     {
-      id: 22,
-      name: "Monocrystalline Solar Panel",
+      id: 25,
+      name: "Solar Panel",
       description:
-        "High-efficiency monocrystalline solar panels for residential and commercial installations.",
-      image: "/images/solar-power-pv.png",
+        "High-efficiency monocrystalline solar panels for residential and commercial solar power installations.",
+      image: "/images/solar-power-pv/SolarPowerPV1.webp",
     },
     {
-      id: 23,
-      name: "Polycrystalline Solar Panel",
+      id: 26,
+      name: "Solar Panel",
       description:
-        "Cost-effective polycrystalline solar panels with good performance and durability.",
-      image: "/images/solar-power-pv.png",
-    },
-    {
-      id: 24,
-      name: "Solar Inverter System",
-      description:
-        "Advanced solar inverter system with grid-tie capability and monitoring features.",
-      image: "/images/solar-power-pv.png",
+        "Cost-effective polycrystalline solar panels with excellent performance and long-term reliability.",
+      image: "/images/solar-power-pv/SolarPowerPV2.webp",
     },
   ],
 };
@@ -307,11 +307,10 @@ const ProductsPage = () => {
     if (category && categoryProducts[category]) {
       setIsLoading(true);
       setCurrentCategory(category);
-      // Simulate loading delay for better UX
       setTimeout(() => {
         setProducts(categoryProducts[category]);
         setIsLoading(false);
-      }, 800);
+      }, 400);
     } else {
       setIsLoading(false);
       setCurrentCategory("");
@@ -337,7 +336,7 @@ const ProductsPage = () => {
           textAlign: "center",
           padding: 0,
           width: "100%",
-          minHeight: "400px",
+          minHeight: "450px",
           border: "none",
           borderRadius: theme.spacing(3),
           backgroundColor: "rgba(255, 255, 255, 0.9)",
@@ -349,22 +348,27 @@ const ProductsPage = () => {
           flexDirection: "column",
         }}
       >
-        <Box sx={{ position: "relative", p: 2, mb: 1 }}>
+        <Box
+          sx={{
+            position: "relative",
+            height: "280px",
+            overflow: "hidden",
+            width: "100%",
+            flexShrink: 0,
+          }}
+        >
           <Skeleton
             variant="rectangular"
             width="100%"
-            height={200}
+            height="100%"
             sx={{
-              borderRadius: theme.spacing(2),
-              maxWidth: isSmallMobile ? "120px" : isMobile ? "140px" : "160px",
-              margin: "0 auto",
+              borderRadius: 0,
             }}
           />
         </Box>
         <CardContent
           sx={{
-            padding: { xs: 1.5, sm: 2, md: 2.5 },
-            paddingTop: 0,
+            padding: { xs: 2, sm: 2.5, md: 3 },
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
@@ -423,7 +427,7 @@ const ProductsPage = () => {
                 variant={isSmallMobile ? "h4" : isMobile ? "h3" : "h2"}
                 component="h1"
               >
-                Our{" "}
+                Our <br />
                 <span className="category">
                   {categoryNames[currentCategory]}
                 </span>
@@ -505,7 +509,7 @@ const ProductsPage = () => {
                 variant={isSmallMobile ? "h4" : isMobile ? "h3" : "h2"}
                 component="h1"
               >
-                Our{" "}
+                Our <br />
                 <span className="category">
                   {categoryNames[currentCategory]}
                 </span>
@@ -558,13 +562,13 @@ const ProductsPage = () => {
         }}
       >
         <Container maxWidth="lg">
-          <Fade in timeout={800}>
+          <Fade in timeout={400}>
             <Box>
               <SectionTitle
-                variant={isSmallMobile ? "h4" : isMobile ? "h3" : "h2"}
+                variant={isSmallMobile ? "h4" : isMobile ? "h3" : "h1"}
                 component="h1"
               >
-                Our{" "}
+                Our <br />
                 <span className="category">
                   {categoryNames[currentCategory]}
                 </span>
@@ -577,40 +581,37 @@ const ProductsPage = () => {
               >
                 {products.map((product, index) => (
                   <Grid item xs={12} sm={6} md={4} lg={4} key={product.id}>
-                    <Fade in timeout={800 + index * 100}>
+                    <Fade in timeout={400 + index * 100}>
                       <Box>
                         <ProductCard
                           onClick={() => handleProductClick(product)}
                         >
-                          <CategoryChip
-                            label={categoryNames[currentCategory].split(" ")[0]}
-                            size="small"
-                          />
-
-                          <Box sx={{ position: "relative", p: 2, mb: 1 }}>
+                          <Box
+                            sx={{
+                              position: "relative",
+                              height: "280px",
+                              overflow: "hidden",
+                              width: "100%",
+                              flexShrink: 0,
+                            }}
+                          >
                             <ProductImage
                               src={product.image}
                               alt={product.name}
-                              width={200}
-                              height={200}
+                              fill
                               className="product-image"
+                              sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw"
                               style={{
-                                width: "100%",
-                                maxWidth: isSmallMobile
-                                  ? "120px"
-                                  : isMobile
-                                  ? "140px"
-                                  : "160px",
-                                height: "auto",
-                                aspectRatio: "1/1",
+                                objectFit: "contain",
+                                objectPosition: "center",
                               }}
+                              priority={index < 3}
                             />
                           </Box>
 
                           <CardContent
                             sx={{
-                              padding: { xs: 1.5, sm: 2, md: 2.5 },
-                              paddingTop: 0,
+                              padding: { xs: 2, sm: 2.5, md: 3 },
                               display: "flex",
                               flexDirection: "column",
                               justifyContent: "flex-start",
@@ -626,7 +627,7 @@ const ProductsPage = () => {
                                 display: "flex",
                                 flexDirection: "column",
                                 alignItems: "center",
-                                justifyContent: "flex-start",
+                                justifyContent: "center",
                                 width: "100%",
                                 gap: 2,
                               }}
@@ -638,8 +639,6 @@ const ProductsPage = () => {
                                   fontWeight: 700,
                                   color: "#000 !important",
                                   textAlign: "center",
-                                  lineHeight: 1.3,
-                                  marginBottom: { xs: 1, sm: 1.5 },
                                   fontSize: {
                                     xs: "1rem",
                                     sm: "1.1rem",
@@ -656,7 +655,7 @@ const ProductsPage = () => {
                                 sx={{
                                   color: "#333 !important",
                                   textAlign: "center",
-                                  lineHeight: 1.6,
+                                  lineHeight: 1.1,
                                   fontSize: {
                                     xs: "0.85rem",
                                     sm: "0.9rem",
