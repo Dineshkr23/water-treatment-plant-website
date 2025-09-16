@@ -15,7 +15,7 @@ import ArrowOutwardOutlinedIcon from "@mui/icons-material/ArrowOutwardOutlined";
 import Image from "next/image";
 
 const AboutContainer = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(8, 0),
+  padding: theme.spacing(4, 0),
   backgroundColor: "background.paper",
   [theme.breakpoints.down("md")]: {
     padding: theme.spacing(6, 0),
@@ -146,7 +146,7 @@ const AboutUsSection = () => {
                     },
                   }}
                 >
-                  Radow Engineer is committed to delivering reliable,
+                  Raddow Engineers is committed to delivering reliable,
                   sustainable, and efficient solutions in water and energy
                   management. With expertise in solar power, heating systems,
                   and water treatment technologies, we provide end-to-end
@@ -185,20 +185,6 @@ const AboutUsSection = () => {
                   >
                     Managing Partner
                   </Typography>
-                </Box>
-
-                <Box
-                  sx={{
-                    textAlign: isMobile ? "center" : "left",
-                    mt: { xs: 2, md: 0 },
-                  }}
-                >
-                  <StyledButton
-                    variant="contained"
-                    endIcon={<ArrowOutwardOutlinedIcon />}
-                  >
-                    Read story
-                  </StyledButton>
                 </Box>
               </Stack>
             </Box>

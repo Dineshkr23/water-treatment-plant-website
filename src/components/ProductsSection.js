@@ -91,24 +91,19 @@ const products = [
     category: "pumps-pumping-system",
   },
   {
-    icon: "/images/heat-pumps.png",
-    name: "Heat Pumps",
-    category: "heat-pumps",
-  },
-  {
     icon: "/images/solar-water-heating-system.png",
-    name: "Solar Water Heating System",
-    category: "solar-water-heating-system",
-  },
-  {
-    icon: "/images/water-heaters.png",
-    name: "Water Heaters",
-    category: "water-heaters",
+    name: "Heating Systems",
+    category: "heating-systems",
   },
   {
     icon: "/images/solar-power-pv.png",
     name: "Solar Power PV",
     category: "solar-power-pv",
+  },
+  {
+    icon: "/images/pumps-pumping-system.png",
+    name: "Plumbing Services",
+    category: "plumbing-services",
   },
 ];
 

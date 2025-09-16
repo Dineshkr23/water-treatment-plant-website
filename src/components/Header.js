@@ -197,7 +197,7 @@ const Header = () => {
             <LogoContainer>
               <LogoImage
                 src="/images/header-logo.png"
-                alt="RAGDOW ENGINEERS"
+                alt="Raddow ENGINEERS"
                 width={200}
                 height={40}
                 priority

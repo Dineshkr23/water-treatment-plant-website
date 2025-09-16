@@ -181,7 +181,7 @@ const Footer = () => {
             <FooterLogoContainer>
               <FooterLogo
                 src="/images/footer-logo.png"
-                alt="RAGDOW ENGINEERS"
+                alt="Raddow ENGINEERS"
                 width={isSmallMobile ? 140 : isMobile ? 160 : 200}
                 height={isSmallMobile ? 35 : isMobile ? 40 : 40}
                 onClick={() => router.push("/")}
@@ -207,6 +207,19 @@ const Footer = () => {
                 alignItems={isMobile ? "center" : "flex-start"}
                 spacing={0.5}
               >
+                <Link
+                  href="tel:+918123444007"
+                  sx={{
+                    color: (theme) => theme.palette.text.secondary,
+                    textDecoration: "none",
+                    fontSize: isSmallMobile ? "0.8rem" : "0.9rem",
+                    "&:hover": {
+                      color: theme.palette.primary.main,
+                    },
+                  }}
+                >
+                  +91 81234 44007
+                </Link>
                 <Link
                   href="tel:+919845989141"
                   sx={{
@@ -239,7 +252,7 @@ const Footer = () => {
             <ContactInfo variant="body2">
               <Email sx={{ fontSize: isSmallMobile ? "0.9rem" : "1rem" }} />
               <Link
-                href="mailto:raddowengineers@gmail.com"
+                href="mailto:Info@raddowenginners.com"
                 sx={{
                   color: (theme) => theme.palette.text.secondary,
                   textDecoration: "none",
@@ -250,7 +263,7 @@ const Footer = () => {
                   },
                 }}
               >
-                raddowengineers@gmail.com
+                Info@raddowenginners.com
               </Link>
             </ContactInfo>
 

@@ -15,7 +15,7 @@ const ServiceItem = styled(Box)(({ theme }) => ({
   minWidth: "100px",
   transition: "all 0.3s ease",
   cursor: "pointer",
-  padding: theme.spacing(2),
+  padding: theme.spacing(1),
   "&:hover": {
     backgroundColor: "rgba(0, 43, 122, 0.05)",
     transform: "translateY(-2px)",
@@ -24,7 +24,7 @@ const ServiceItem = styled(Box)(({ theme }) => ({
 }));
 
 const ServiceIcon = styled(Image)(({ theme }) => ({
-  marginRight: theme.spacing(2),
+  marginRight: theme.spacing(0),
   flexShrink: 0,
   transition: "all 0.3s ease",
 }));
@@ -52,8 +52,8 @@ const services = [
     icon: "/images/free-layout-drawing.png",
     title: (
       <>
-        <span style={{ fontWeight: 400 }}>Free</span>{" "}
-        <span style={{ fontWeight: 600 }}>Layout Drawing</span>
+        <span style={{ fontWeight: 400 }}>Layout</span>{" "}
+        <span style={{ fontWeight: 600 }}>Drawing</span>
       </>
     ),
   },
@@ -61,8 +61,8 @@ const services = [
     icon: "/images/free-installation.png",
     title: (
       <>
-        <span style={{ fontWeight: 400 }}>Free</span>{" "}
-        <span style={{ fontWeight: 600 }}>Installation</span>
+        <span style={{ fontWeight: 400 }}>Installation &</span>{" "}
+        <span style={{ fontWeight: 600 }}>Commissioning Support</span>
       </>
     ),
   },
@@ -70,8 +70,8 @@ const services = [
     icon: "/images/free-waranty-service.png",
     title: (
       <>
-        <span style={{ fontWeight: 400 }}>Free</span>{" "}
-        <span style={{ fontWeight: 600 }}>Warranty Service</span>
+        <span style={{ fontWeight: 400 }}>Warranty</span>{" "}
+        <span style={{ fontWeight: 600 }}>Services</span>
       </>
     ),
   },
@@ -136,7 +136,7 @@ const ServiceFeatures = () => {
           {services.map((service, index) => (
             <ServiceItem
               key={`desktop-${index}`}
-              onClick={() => handleServiceClick(service)}
+              // onClick={() => handleServiceClick(service)}
               sx={{
                 borderRight:
                   index < services.length - 1 ? "1px solid #BCBCBC" : "none",
@@ -172,7 +172,7 @@ const ServiceFeatures = () => {
           }}
         >
           <ServiceItem
-            onClick={() => handleServiceClick(services[0])}
+            // onClick={() => handleServiceClick(services[0])}
             sx={{
               flex: "1",
             }}
@@ -195,7 +195,7 @@ const ServiceFeatures = () => {
             </Typography>
           </ServiceItem>
           <ServiceItem
-            onClick={() => handleServiceClick(services[1])}
+            // onClick={() => handleServiceClick(services[1])}
             sx={{
               flex: "1",
             }}
@@ -228,7 +228,7 @@ const ServiceFeatures = () => {
           }}
         >
           <ServiceItem
-            onClick={() => handleServiceClick(services[2])}
+            // onClick={() => handleServiceClick(services[2])}
             sx={{
               flex: "1",
             }}
@@ -251,7 +251,7 @@ const ServiceFeatures = () => {
             </Typography>
           </ServiceItem>
           <ServiceItem
-            onClick={() => handleServiceClick(services[3])}
+            // onClick={() => handleServiceClick(services[3])}
             sx={{
               flex: "1",
             }}
@@ -283,7 +283,7 @@ const ServiceFeatures = () => {
           }}
         >
           <ServiceItem
-            onClick={() => handleServiceClick(services[4])}
+            // onClick={() => handleServiceClick(services[4])}
             sx={{
               flex: "1",
               maxWidth: "50%",
@@ -311,7 +311,7 @@ const ServiceFeatures = () => {
         {services.map((service, index) => (
           <ServiceItem
             key={`mobile-${index}`}
-            onClick={() => handleServiceClick(service)}
+            // onClick={() => handleServiceClick(service)}
             sx={{
               display: { xs: "flex", sm: "none", md: "none" },
               width: "100%",

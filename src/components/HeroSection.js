@@ -158,7 +158,7 @@ const DotsContainer = styled(Box)(({ theme }) => ({
 const sliderData = [
   {
     id: 1,
-    image: "/images/hero-image-1.webp",
+    image: "/images/hero-image.webp",
     title: (
       <>
         <span className="engineering">Engineering</span>
@@ -167,13 +167,13 @@ const sliderData = [
       </>
     ),
     subtitle:
-      "From heat pumps and solar water heaters to water treatment and waste-water systems — all under one roof.",
+      "Future Engineering Solutions Water Treatment, Heating, Pumping, and Plumbing - for Domestic, Commercial and Industrial needs",
     buttonText: "Call Now",
     buttonAction: "call",
   },
   {
     id: 2,
-    image: "/images/hero-image-1.webp",
+    image: "/images/hero-image.webp",
     title: (
       <>
         <span className="engineering">Advanced</span>
@@ -182,13 +182,13 @@ const sliderData = [
       </>
     ),
     subtitle:
-      "Energy-efficient heating and cooling solutions for residential and commercial applications.",
+      "Advanced Water Heating Systems - Energy efficient water heating solutions",
     buttonText: "Learn More",
     buttonAction: "learn",
   },
   {
     id: 3,
-    image: "/images/hero-image-1.webp",
+    image: "/images/hero-image.webp",
     title: (
       <>
         <span className="engineering">Solar</span>
@@ -197,13 +197,13 @@ const sliderData = [
       </>
     ),
     subtitle:
-      "Harness the power of the sun with our cutting-edge solar photovoltaic and water heating systems.",
+      "Harness the power of the Sun with our cutting-edge solar photovoltaic energy",
     buttonText: "Get Quote",
     buttonAction: "quote",
   },
   {
     id: 4,
-    image: "/images/hero-image-1.webp",
+    image: "/images/hero-image.webp",
     title: (
       <>
         <span className="engineering">Water</span>
@@ -212,7 +212,21 @@ const sliderData = [
       </>
     ),
     subtitle:
-      "State-of-the-art water purification and wastewater treatment solutions for clean, sustainable water.",
+      "Engineering Water Treatment for Purity, Efficiency & Sustainability.",
+    buttonText: "Contact Us",
+    buttonAction: "contact",
+  },
+  {
+    id: 5,
+    image: "/images/hero-image.webp",
+    title: (
+      <>
+        <span className="engineering">Engineering solutions</span>
+        <br />
+        <span className="future-solutions">for pumps and plumbing</span>
+      </>
+    ),
+    subtitle: "Integrated solutions for pumping systems and plumbing networks",
     buttonText: "Contact Us",
     buttonAction: "contact",
   },
@@ -269,19 +283,21 @@ const HeroSection = () => {
   const handleButtonClick = (action) => {
     switch (action) {
       case "call":
-        window.location.href = "tel:+919845989141";
+        window.location.href = "tel:+918123444007";
         break;
       case "learn":
-        router.push("/products?category=heat-pumps");
+        router.push("/products?category=heating-systems");
         break;
+      // case "quote":
+      //   setTimeout(() => {
+      //     if (window.openQuoteDialog) {
+      //       window.openQuoteDialog();
+      //     } else {
+      //       console.log("openQuoteDialog function not found");
+      //     }
+      //   }, 100);
       case "quote":
-        setTimeout(() => {
-          if (window.openQuoteDialog) {
-            window.openQuoteDialog();
-          } else {
-            console.log("openQuoteDialog function not found");
-          }
-        }, 100);
+        window.location.href = "tel:+918123444007";
         break;
       case "contact":
         const contactSection = document.getElementById("contact");

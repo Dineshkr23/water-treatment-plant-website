@@ -19,6 +19,7 @@ import Image from "next/image";
 import ProductDialog from "../../components/ProductDialog";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 const SectionTitle = styled(Typography)(({ theme }) => ({
   fontWeight: 700,
@@ -80,58 +81,50 @@ const categoryProducts = {
   "water-treatment-plants": [
     {
       id: 1,
-      name: "Activated Carbon Filter",
-      description:
-        "Advanced filtration system using activated carbon to remove chlorine, organic compounds, and improve water taste and odor.",
-      image: "/images/water-treatment-plants/ActivatedCarbonFilter.webp",
-    },
-    {
-      id: 2,
-      name: "Bag Filter",
-      description:
-        "Efficient bag filtration system for removing suspended solids and particulate matter from industrial water streams.",
-      image: "/images/water-treatment-plants/BagFilter.webp",
-    },
-    {
-      id: 3,
-      name: "Industrial Water Treatment Plant",
-      description:
-        "Complete industrial water treatment solution with multi-stage filtration, softening, and purification processes.",
-      image:
-        "/images/water-treatment-plants/IndustrialWaterTreatmentPlant.webp",
-    },
-    {
-      id: 4,
       name: "Pressure Sand Filter",
       description:
         "High-pressure sand filtration system for removing suspended solids and turbidity from water supplies.",
       image: "/images/water-treatment-plants/PressureSandFilter.webp",
     },
     {
-      id: 5,
+      id: 2,
       name: "Water Softner",
       description:
         "Ion exchange water softener system for removing hardness minerals like calcium and magnesium from water.",
       image: "/images/water-treatment-plants/WaterSoftner.webp",
     },
     {
-      id: 6,
-      name: "Water Softening System",
+      id: 3,
+      name: "Water Treatment Plant",
       description:
         "Advanced water softening technology for residential and commercial applications with automatic regeneration.",
       image: "/images/water-treatment-plants/WaterSofteningSystem.webp",
     },
+    {
+      id: 4,
+      name: "Activated Carbon Filter",
+      description:
+        "Advanced filtration system using activated carbon to remove chlorine, organic compounds, and improve water taste and odor.",
+      image: "/images/water-treatment-plants/ActivatedCarbonFilter.webp",
+    },
+    {
+      id: 5,
+      name: "Industrial Water Treatment Plant",
+      description:
+        "Complete industrial water treatment solution with multi-stage filtration, softening, and purification processes.",
+      image:
+        "/images/water-treatment-plants/IndustrialWaterTreatmentPlant.webp",
+    },
   ],
   "ro-system": [
     {
-      id: 7,
+      id: 6,
       name: "RO System",
-      description:
-        "Compact 5-stage reverse osmosis system for residential use with high-efficiency membrane technology.",
+      description: "Compact Reverse Osmosis system with high efficiency",
       image: "/images/ro-system/RoType1.webp",
     },
     {
-      id: 8,
+      id: 7,
       name: "RO System",
       description:
         "Commercial-grade RO system with high output capacity for industrial and commercial water purification needs.",
@@ -140,18 +133,25 @@ const categoryProducts = {
   ],
   "sewage-treatment-plants": [
     {
-      id: 9,
+      id: 8,
       name: "Modular STP",
       description:
         "Compact modular sewage treatment plant for small communities with advanced biological treatment processes.",
       image: "/images/sewage-treatment-plants/ModularSTP.webp",
     },
     {
+      id: 9,
+      name: "Grease Separator",
+      description:
+        "Grease separation system for removing fats, oils, and grease from wastewater streams.",
+      image: "/images/sewage-treatment-plants/GreaseSeparator.webp",
+    },
+    {
       id: 10,
       name: "Grease Separator",
       description:
-        "Industrial grease separation system for removing fats, oils, and grease from wastewater streams.",
-      image: "/images/sewage-treatment-plants/GreaseSeparator.webp",
+        "Widely used in commercial kitchens, hotels, restaurants, and food processing units, grease separators are an essential component for safe and sustainable wastewater management.",
+      image: "/images/sewage-treatment-plants/grease_separator_2.webp",
     },
   ],
   "pumps-pumping-system": [
@@ -175,7 +175,7 @@ const categoryProducts = {
       description:
         "Automated pressure boosting system with hydro-pneumatic tank for consistent water supply pressure.",
       image:
-        "/images/pumps-pumping-system/HydroPneumaticPressureBoostingSystem.jpg",
+        "/images/pumps-pumping-system/HydroPneumaticPressureBoostingSystem.webp",
     },
     {
       id: 14,
@@ -193,13 +193,13 @@ const categoryProducts = {
     },
     {
       id: 16,
-      name: "CMBE Booster Pump",
+      name: "VFD Booster Pumps",
       description:
         "High-efficiency centrifugal booster pump for water transfer, irrigation, and industrial applications.",
       image: "/images/pumps-pumping-system/CMBEBoosterPump.webp",
     },
   ],
-  "heat-pumps": [
+  "heating-systems": [
     {
       id: 17,
       name: "Heat Pump",
@@ -214,8 +214,6 @@ const categoryProducts = {
         "Ground-source geothermal heat pump for sustainable heating and cooling with superior efficiency performance.",
       image: "/images/heat-pumps/heatPump2.webp",
     },
-  ],
-  "solar-water-heating-system": [
     {
       id: 19,
       name: "Solar Water Heater System",
@@ -237,8 +235,6 @@ const categoryProducts = {
         "Complete solar water heating system with storage tank, circulation pump, and control system.",
       image: "/images/solar-water-heating-syatem/SolarWaterHeatingSystem3.webp",
     },
-  ],
-  "water-heaters": [
     {
       id: 22,
       name: "Oil/Gas Central Water Heater",
@@ -277,6 +273,44 @@ const categoryProducts = {
       image: "/images/solar-power-pv/SolarPowerPV2.webp",
     },
   ],
+  "plumbing-services": [
+    {
+      id: 27,
+      name: "Copper Plumbing",
+      description:
+        "High-quality copper plumbing systems for residential and commercial applications with superior durability and corrosion resistance.",
+      image: "/images/plumbing-services/copper_1.webp",
+    },
+    {
+      id: 28,
+      name: "MS Plumbing - Durable and Efficient Networks",
+      description:
+        "Mild steel plumbing solutions designed for industrial applications with robust construction and long-lasting performance.",
+      image: "/images/plumbing-services/ms_plumbing_1.webp",
+    },
+    {
+      id: 29,
+      name: "SS Plumbing",
+      description:
+        "Stainless steel plumbing systems offering exceptional hygiene, corrosion resistance, and aesthetic appeal for modern installations.",
+      image: "/images/plumbing-services/ss_plumbing_2.webp",
+    },
+    {
+      id: 30,
+      name: "Booster Pumps and Pressure Systems",
+      description:
+        "Advanced booster pump systems ensuring consistent water pressure and reliable performance for high-rise buildings and large facilities.",
+      image: "/images/plumbing-services/booster_pumps_pressure_systems.webp",
+    },
+    {
+      id: 31,
+      name: "MS & SS Storage Tanks Integration",
+      description:
+        "Comprehensive storage tank solutions integrating mild steel and stainless steel systems for optimal water storage and distribution.",
+      image:
+        "/images/plumbing-services/ms_ss_storage_tanks_integration_02.webp",
+    },
+  ],
 };
 
 const categoryNames = {
@@ -284,10 +318,9 @@ const categoryNames = {
   "ro-system": "RO System",
   "sewage-treatment-plants": "Sewage Treatment Plants",
   "pumps-pumping-system": "Pumps & Pumping System",
-  "heat-pumps": "Heat Pumps",
-  "solar-water-heating-system": "Solar Water Heating System",
-  "water-heaters": "Water Heaters",
+  "heating-systems": "Heating Systems",
   "solar-power-pv": "Solar Power PV",
+  "plumbing-services": "Plumbing Services",
 };
 
 const ProductsPage = () => {
@@ -415,7 +448,7 @@ const ProductsPage = () => {
         <Header />
         <Box
           sx={{
-            py: { xs: 3, sm: 4, md: 6 },
+            pb: { xs: 3, sm: 4, md: 6 },
             backgroundColor: "background.default",
             minHeight: "100vh",
             background: "#edf3fc",
@@ -423,6 +456,16 @@ const ProductsPage = () => {
         >
           <Container maxWidth="lg">
             <Box>
+              <Breadcrumbs
+                items={[
+                  { label: "Products", href: "/#products" },
+                  {
+                    label: categoryNames[currentCategory],
+                    href: null,
+                  },
+                ]}
+                showHome={true}
+              />
               <SectionTitle
                 variant={isSmallMobile ? "h4" : isMobile ? "h3" : "h2"}
                 component="h1"
@@ -432,6 +475,65 @@ const ProductsPage = () => {
                   {categoryNames[currentCategory]}
                 </span>
               </SectionTitle>
+
+              {/* Installation & Commissioning Services Banner for Plumbing Services */}
+              {currentCategory === "plumbing-services" && (
+                <Box
+                  sx={{
+                    backgroundColor: "rgba(2, 101, 254, 0.05)",
+                    padding: { xs: 3, sm: 4, md: 5 },
+                    marginBottom: { xs: 4, sm: 5, md: 6 },
+                    textAlign: "center",
+                    position: "relative",
+                    overflow: "hidden",
+                    "&::before": {
+                      content: '""',
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: "4px",
+                      background:
+                        "linear-gradient(90deg, #0265FE 0%, #00CC87 100%)",
+                    },
+                  }}
+                >
+                  <Typography
+                    variant={isSmallMobile ? "h5" : isMobile ? "h4" : "h3"}
+                    component="h2"
+                    sx={{
+                      fontWeight: 700,
+                      color: theme.palette.text.secondary,
+                      marginBottom: { xs: 2, sm: 3 },
+                      fontSize: {
+                        xs: "1.5rem",
+                        sm: "1.75rem",
+                        md: "2rem",
+                      },
+                    }}
+                  >
+                    Installation & Commissioning Services
+                  </Typography>
+                  <Typography
+                    variant={isSmallMobile ? "body2" : "body1"}
+                    sx={{
+                      color: theme.palette.text.secondary,
+                      lineHeight: 1.7,
+                      maxWidth: "800px",
+                      margin: "0 auto",
+                      fontSize: {
+                        xs: "0.9rem",
+                        sm: "1rem",
+                        md: "1.1rem",
+                      },
+                    }}
+                  >
+                    With a focus on quality materials, Precision installation,
+                    and Long-Term reliability, We deliver plumbing solutions
+                    that ensure smooth operation and sustainability.
+                  </Typography>
+                </Box>
+              )}
 
               <Grid
                 container
@@ -457,8 +559,7 @@ const ProductsPage = () => {
         <Header />
         <Box
           sx={{
-            mt: { xs: 2, sm: 3, md: 4 },
-            py: { xs: 2, sm: 3, md: 4 },
+            pb: { xs: 2, sm: 3, md: 4 },
             backgroundColor: "background.default",
             minHeight: "60vh",
             display: "flex",
@@ -468,6 +569,10 @@ const ProductsPage = () => {
           }}
         >
           <Container maxWidth="lg">
+            <Breadcrumbs
+              items={[{ label: "Products", href: null }]}
+              showHome={true}
+            />
             <Typography
               variant="h5"
               textAlign="center"
@@ -497,7 +602,7 @@ const ProductsPage = () => {
         <Header />
         <Box
           sx={{
-            py: { xs: 3, sm: 4, md: 6 },
+            pb: { xs: 3, sm: 4, md: 6 },
             backgroundColor: "background.default",
             minHeight: "100vh",
             background: "#edf3fc",
@@ -505,6 +610,16 @@ const ProductsPage = () => {
         >
           <Container maxWidth="lg">
             <Box>
+              <Breadcrumbs
+                items={[
+                  { label: "Products", href: "/#products" },
+                  {
+                    label: categoryNames[currentCategory],
+                    href: null,
+                  },
+                ]}
+                showHome={true}
+              />
               <SectionTitle
                 variant={isSmallMobile ? "h4" : isMobile ? "h3" : "h2"}
                 component="h1"
@@ -514,6 +629,65 @@ const ProductsPage = () => {
                   {categoryNames[currentCategory]}
                 </span>
               </SectionTitle>
+
+              {/* Installation & Commissioning Services Banner for Plumbing Services */}
+              {currentCategory === "plumbing-services" && (
+                <Box
+                  sx={{
+                    backgroundColor: "rgba(2, 101, 254, 0.05)",
+                    padding: { xs: 3, sm: 4, md: 5 },
+                    marginBottom: { xs: 4, sm: 5, md: 6 },
+                    textAlign: "center",
+                    position: "relative",
+                    overflow: "hidden",
+                    "&::before": {
+                      content: '""',
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: "4px",
+                      background:
+                        "linear-gradient(90deg, #0265FE 0%, #00CC87 100%)",
+                    },
+                  }}
+                >
+                  <Typography
+                    variant={isSmallMobile ? "h5" : isMobile ? "h4" : "h3"}
+                    component="h2"
+                    sx={{
+                      fontWeight: 700,
+                      color: theme.palette.text.secondary,
+                      marginBottom: { xs: 2, sm: 3 },
+                      fontSize: {
+                        xs: "1.5rem",
+                        sm: "1.75rem",
+                        md: "2rem",
+                      },
+                    }}
+                  >
+                    Installation & Commissioning Services
+                  </Typography>
+                  <Typography
+                    variant={isSmallMobile ? "body2" : "body1"}
+                    sx={{
+                      color: theme.palette.text.secondary,
+                      lineHeight: 1.7,
+                      maxWidth: "800px",
+                      margin: "0 auto",
+                      fontSize: {
+                        xs: "0.9rem",
+                        sm: "1rem",
+                        md: "1.1rem",
+                      },
+                    }}
+                  >
+                    With a focus on quality materials, Precision installation,
+                    and Long-Term reliability, We deliver plumbing solutions
+                    that ensure smooth operation and sustainability.
+                  </Typography>
+                </Box>
+              )}
 
               <Box
                 sx={{
@@ -555,7 +729,7 @@ const ProductsPage = () => {
       <Header />
       <Box
         sx={{
-          py: { xs: 3, sm: 4, md: 6 },
+          pb: { xs: 3, sm: 4, md: 6 },
           backgroundColor: "background.default",
           minHeight: "100vh",
           background: "#edf3fc",
@@ -564,6 +738,16 @@ const ProductsPage = () => {
         <Container maxWidth="lg">
           <Fade in timeout={400}>
             <Box>
+              <Breadcrumbs
+                items={[
+                  { label: "Products", href: "/#products" },
+                  {
+                    label: categoryNames[currentCategory],
+                    href: null,
+                  },
+                ]}
+                showHome={true}
+              />
               <SectionTitle
                 variant={isSmallMobile ? "h4" : isMobile ? "h3" : "h1"}
                 component="h1"
@@ -573,6 +757,65 @@ const ProductsPage = () => {
                   {categoryNames[currentCategory]}
                 </span>
               </SectionTitle>
+
+              {/* Installation & Commissioning Services Banner for Plumbing Services */}
+              {currentCategory === "plumbing-services" && (
+                <Box
+                  sx={{
+                    backgroundColor: "rgba(2, 101, 254, 0.05)",
+                    padding: { xs: 3, sm: 4, md: 5 },
+                    marginBottom: { xs: 4, sm: 5, md: 6 },
+                    textAlign: "center",
+                    position: "relative",
+                    overflow: "hidden",
+                    "&::before": {
+                      content: '""',
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: "4px",
+                      background:
+                        "linear-gradient(90deg, #0265FE 0%, #00CC87 100%)",
+                    },
+                  }}
+                >
+                  <Typography
+                    variant={isSmallMobile ? "h5" : isMobile ? "h5" : "h4"}
+                    component="h2"
+                    sx={{
+                      fontWeight: 700,
+                      color: theme.palette.text.secondary,
+                      marginBottom: { xs: 2, sm: 3 },
+                      fontSize: {
+                        xs: "1.5rem",
+                        sm: "1.75rem",
+                        md: "2rem",
+                      },
+                    }}
+                  >
+                    Installation & Commissioning Services
+                  </Typography>
+                  <Typography
+                    variant={isSmallMobile ? "body2" : "body1"}
+                    sx={{
+                      color: theme.palette.text.secondary,
+                      lineHeight: 1.7,
+                      maxWidth: "800px",
+                      margin: "0 auto",
+                      fontSize: {
+                        xs: "0.9rem",
+                        sm: "1rem",
+                        md: "1.1rem",
+                      },
+                    }}
+                  >
+                    With a focus on quality materials, Precision installation,
+                    and Long-Term reliability, We deliver plumbing solutions
+                    that ensure smooth operation and sustainability.
+                  </Typography>
+                </Box>
+              )}
 
               <Grid
                 container

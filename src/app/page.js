@@ -22,10 +22,12 @@ export default function Home() {
       <section id="about">
         <AboutUsSection />
       </section>
-      <section id="contact">
+      {/* <section id="contact">
         <CallbackRequestSection />
+      </section> */}
+      <section id="contact">
+        <Footer />
       </section>
-      <Footer />
     </main>
   );
 }

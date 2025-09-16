@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Ragdow Engineers - Water & Energy Management Solutions",
+  title: "Raddow Engineers - Water & Energy Management Solutions",
   description:
     "Leading provider of heat pumps, solar water heaters, water treatment systems, and sustainable energy solutions.",
 };
